@@ -18,11 +18,9 @@ pipeline {
         stage('Read Version') {
             steps {
                 script{
-                    sh {
                        def packageJSON = readJSON file: 'package.json'
                        appVersion = packageJSON.version
                        echo "app version: ${appVersion}"
-                    }
                 }
             }
         }
@@ -31,6 +29,16 @@ pipeline {
                 script{
                     sh """
                         npm install
+                    """
+                }
+            }
+        }
+        stage('Build Image') {
+            steps {
+                script{
+                    sh """
+                        docker build -t catalogue:${appVersion} .
+                        docker images
                     """
                 }
             }

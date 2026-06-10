@@ -45,7 +45,7 @@ pipeline {
                 }
             }
         }
-        # here you need to select scanner tool and send the analysis to server
+        // here you need to select scanner tool and send the analysis to server
         stage('sonar scan'){
             environment{
                 def scannerHome = tool 'sonar-8.0'

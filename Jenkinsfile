@@ -60,6 +60,12 @@ pipeline {
                 }
             }
         }
+        stage('Quality gate') {
+            steps {
+                timeout(time: 1, units: 'HOURS')
+                    waitForQualityGate abortPipeline true;
+            }
+        }
         stage('Build Image') {
             steps {
                 script{

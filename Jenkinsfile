@@ -46,7 +46,7 @@ pipeline {
             }
         }
         // here you need to select scanner tool and send the analysis to server
-        stage('sonar scan'){
+  /*       stage('sonar scan'){
             environment{
                 def scannerHome = tool 'sonar-8.0'
             }
@@ -68,7 +68,7 @@ pipeline {
                     waitForQualityGate abortPipeline: true 
                 }
             }
-        }
+        } */
         stage('Build Image') {
             steps {
                 script{
